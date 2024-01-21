@@ -36,13 +36,12 @@ public class RegisterPageTest {
 
         ChromeOptions options = new ChromeOptions();
         System.setProperty("webdriver.chrome.silentOutput", "true");
-        //options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.get(BurgerUrl.REGISTER_PAGE);
         registerPage = new RegisterPage(driver);
 
-        WebElement until = new WebDriverWait(driver, timeout)
+        new WebDriverWait(driver, timeout)
                 .until(ExpectedConditions.visibilityOfElementLocated(registerPage.getEmailInput()));
     }
 
@@ -58,7 +57,7 @@ public class RegisterPageTest {
 
         LoginPage loginPage = new LoginPage(driver);
 
-        WebElement until = new WebDriverWait(driver, timeout)
+        new WebDriverWait(driver, timeout)
                 .until(ExpectedConditions.visibilityOfElementLocated(loginPage.getLoginHeader()));
 
         String currentUrl = driver.getCurrentUrl();
@@ -76,7 +75,7 @@ public class RegisterPageTest {
                 UserData.SHORT_PASSWORD);
         registerPage.clickRegisterButton();
 
-        WebElement until = new WebDriverWait(driver, timeout)
+        new WebDriverWait(driver, timeout)
                 .until(ExpectedConditions.visibilityOfElementLocated(registerPage.getIncorrectPasswordMessage()));
         String expectMessageText = "Некорректный пароль";
         assertThat(registerPage.getIncorrectPasswordMessageText(), is(expectMessageText));

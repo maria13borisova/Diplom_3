@@ -41,7 +41,6 @@ public class UserAccountTest {
 
         ChromeOptions options = new ChromeOptions();
         System.setProperty("webdriver.chrome.silentOutput", "true");
-        //options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         stepsForUser.createUser();
